@@ -42,6 +42,7 @@ public class Lan {
         this.arligeTerminer = arligeTerminer;
         this.lanetype = lanetype;
         this.renteFaktor = renteSats / 100;
+        this.lagPlan();
     }
 
     public static String[] getLanetyper() {
@@ -93,6 +94,22 @@ public class Lan {
 
     public Termin getTermin(int i) {
         return terminer[i-1];
+    }
+
+    public String[][] getPresentationArray() {
+        String[][] rows = new String[terminer.length - 1][5];
+        for(int i = 0; i < terminer.length; i++) {
+            for(Termin termin : terminer) {
+                String [] fields = new String[5];
+                fields[0] = termin.getTerminNr();
+                fields[1] = Long.toString(termin.getTerminbelop());
+                fields[2] = Integer.toString(termin.getRenter());
+                fields[3] = Long.toString(termin.getAvdrag());
+                fields[4] = Long.toString(termin.getRestgjeld());
+                rows[i] = fields;
+            }
+        }
+        return rows;
     }
 
     @Override

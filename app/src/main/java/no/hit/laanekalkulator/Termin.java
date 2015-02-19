@@ -41,4 +41,8 @@ public class Termin {
     public int getRenter() {
         return renter;
     }
+
+    public String getTerminNr() {
+        return Integer.toString(terminnr);
+    }
 }
