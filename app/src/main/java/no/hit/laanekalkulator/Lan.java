@@ -96,19 +96,23 @@ public class Lan {
         return terminer[i-1];
     }
 
-    public String[][] getPresentationArray() {
-        String[][] rows = new String[terminer.length - 1][5];
-        for(int i = 0; i < terminer.length; i++) {
+    public String[] getPresentationArray() {
+        String[] rows = new String[terminer.length];
+        int i = 0;
             for(Termin termin : terminer) {
-                String [] fields = new String[5];
-                fields[0] = termin.getTerminNr();
-                fields[1] = Long.toString(termin.getTerminbelop());
-                fields[2] = Integer.toString(termin.getRenter());
-                fields[3] = Long.toString(termin.getAvdrag());
-                fields[4] = Long.toString(termin.getRestgjeld());
-                rows[i] = fields;
+                StringBuilder fields = new StringBuilder();
+                fields.append("Terminnr: ");
+                fields.append(termin.getTerminNr());
+                fields.append(" | Terminbeløp: ");
+                fields.append(Long.toString(termin.getTerminbelop()));
+                fields.append(" | Renter: ");
+                fields.append(Integer.toString(termin.getRenter()));
+                fields.append(" | Avdrag: ");
+                fields.append(Long.toString(termin.getAvdrag()));
+                fields.append(" | Restgjeld: ");
+                fields.append(Long.toString(termin.getRestgjeld()));
+                rows[i++] = fields.toString();
             }
-        }
         return rows;
     }
 
