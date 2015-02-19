@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
         findViewById(R.id.buttonRegnUt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculate();
+                lagLaan();
             }
         });
 
@@ -78,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    private void calculate() {
+    private Lan lagLaan() {
 
         Lan.Lanetype lanetype = Lan.Lanetype.getByValue((String) spinnerLanetype.getSelectedItem());
         int lanebelop = TypeConverter.editTextToInt(inputLanebelop);
@@ -90,18 +89,14 @@ public class MainActivity extends ActionBarActivity {
 
         float rentesats = TypeConverter.editTextToFloat(inputRentesats);
 
-        Lan lan = new Lan(lanebelop, lopetid, arligeTerminer, lanetype, rentesats);
-
-        System.out.println(lan.toString());
+        return new Lan(lanebelop, lopetid, arligeTerminer, lanetype, rentesats);
     }
 
     private String[] getNedbetalingsplan(){
-        String[] listeTabell = new String[50];
-        for(int rad=0;rad<listeTabell.length;rad++) {
-            listeTabell[rad] = "Dette er rad nr. " + rad;
-        }
-        return listeTabell;
+        Lan lan = lagLaan();
+        return lan.getPresentationArray();
     }
+
     private void visNedbetalingsplan() {
         Intent i = new Intent(MainActivity.this, NedbetalingsplanActivity.class);
         Bundle b = new Bundle();
