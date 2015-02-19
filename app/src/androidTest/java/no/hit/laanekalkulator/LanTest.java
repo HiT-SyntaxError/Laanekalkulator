@@ -36,7 +36,6 @@ public class LanTest extends TestCase {
         Termin termin58 = lanNuitet.getTermin(58);
         assertEquals(30830, termin58.getAvdrag());
     }
-
 /*
     // Test that restgjeld is 0 after last payment
     public void testSerialRestgjeld2() throws Exception {
@@ -58,4 +57,10 @@ public class LanTest extends TestCase {
         assertEquals(4087, termin240.getAvdrag());
     }
     */
+
+    public void testEnumConverter() throws Exception {
+        assertEquals(Lan.Lanetype.ANNUITET, Lan.Lanetype.getByValue("Annuitetslån"));
+        assertEquals(Lan.Lanetype.SERIE, Lan.Lanetype.getByValue("Serielån"));
+    }
+
 }

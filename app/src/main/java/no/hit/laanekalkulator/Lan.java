@@ -20,7 +20,7 @@ public class Lan {
 
         public static Lanetype getByValue(String value){
             for (final Lanetype element : EnumSet.allOf(Lanetype.class)) {
-                if (element.toString().equals(value)) {
+                if (element.getTekst().equals(value)) {
                     return element;
                 }
             }
