@@ -5,5 +5,4 @@
     android:textSize="13dp"
     android:textColor="@color/black"
     android:padding="6dp">
-
 </TextView>

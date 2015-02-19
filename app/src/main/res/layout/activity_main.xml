@@ -124,27 +124,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:button="@drawable/radiobutton_selector"/>
 
             <RadioButton
                 android:id="@+id/radiobuttonTerminer2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:checked="true"
+                android:button="@drawable/radiobutton_selector" />
 
             <RadioButton
                 android:id="@+id/radiobuttonTerminer4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:button="@drawable/radiobutton_selector" />
 
             <RadioButton
                 android:id="@+id/radiobuttonTerminer12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12" />
+                android:text="12"
+                android:button="@drawable/radiobutton_selector"/>
         </RadioGroup>
 
 
