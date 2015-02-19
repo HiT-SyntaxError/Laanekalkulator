@@ -1,6 +1,7 @@
 package no.hit.laanekalkulator;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 
 public class Lan {
 
@@ -15,6 +16,15 @@ public class Lan {
 
         public String getTekst() {
             return tekst;
+        }
+
+        public static Lanetype getByValue(String value){
+            for (final Lanetype element : EnumSet.allOf(Lanetype.class)) {
+                if (element.toString().equals(value)) {
+                    return element;
+                }
+            }
+            return null;
         }
     }
 
@@ -48,5 +58,14 @@ public class Lan {
 
     public void termingebyr() {
 
+    }
+
+    @Override
+    public String toString() {
+        return this.lanetype + "\n" +
+               this.lanebelop + "\n" +
+               this.lopetid + "\n" +
+               this.arligeTerminer + "\n" +
+               this.rentesats;
     }
 }

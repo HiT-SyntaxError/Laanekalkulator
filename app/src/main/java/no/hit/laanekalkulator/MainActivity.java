@@ -8,12 +8,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 
 public class MainActivity extends ActionBarActivity {
 
-    //private Button regnUt;
+    private Spinner spinnerLanetype;
+    private EditText inputLanebelop;
+    private EditText inputLopetid;
+    private EditText inputArligeTerminer;
+    private EditText inputRentesats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,17 +26,24 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         // ----- Valg av lånetype ----
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerLaanetyper);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Lan.getLanetyper());
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
+        this.spinnerLanetype = (Spinner) findViewById(R.id.spinnerLaanetyper);
+        ArrayAdapter<String> lanetypeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Lan.getLanetyper());
+        lanetypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        this.spinnerLanetype.setAdapter(lanetypeAdapter);
 
+        // ----- Regn ut-knapp -----
+        this.inputLanebelop = (EditText) findViewById(R.id.inputLaan);
 
+        // ----- Regn ut-knapp -----
+        this.inputLopetid = (EditText) findViewById(R.id.inputLoepetid);
 
-        // ----- Regn ut-knappen -----
+        // ----- Regn ut-knapp -----
+        this.inputArligeTerminer = (EditText) findViewById(R.id.inputTerminer);
+
+        // ----- Regn ut-knapp -----
+        this.inputRentesats = (EditText) findViewById(R.id.inputRente);
+
+        // ----- Regn ut-knapp -----
         Button regnUt = (Button) findViewById(R.id.buttonRegnUt);
         regnUt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,9 +54,19 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void regnUt() {
-        // TODO: implement method
-        System.out.println("regnUt() er kjørt!");
+
+        Lan.Lanetype lanetype = Lan.Lanetype.getByValue((String) spinnerLanetype.getSelectedItem());
+        int lanebelop = TypeConverter.editTextToInt(inputLanebelop);
+        int lopetid = TypeConverter.editTextToInt(inputLopetid);
+        int arligeTerminer = TypeConverter.editTextToInt(inputArligeTerminer);
+        float rentesats = TypeConverter.editTextToFloat(inputRentesats);
+
+        Lan lan = new Lan(lanebelop, lopetid, arligeTerminer, lanetype, rentesats);
+
+        System.out.println(lan.toString());
     }
+
+
 
 
     @Override
