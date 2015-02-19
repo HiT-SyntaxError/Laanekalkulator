@@ -4,17 +4,23 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    //private Button regnUt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // ----- Valg av lånetype ----
         Spinner spinner = (Spinner) findViewById(R.id.spinnerLaanetyper);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Lan.getLanetyper());
@@ -22,6 +28,22 @@ public class MainActivity extends ActionBarActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
+
+
+        // ----- Regn ut-knappen -----
+        Button regnUt = (Button) findViewById(R.id.buttonRegnUt);
+        regnUt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                regnUt();
+            }
+        });
+    }
+
+    private void regnUt() {
+        // TODO: implement method
+        System.out.println("regnUt() er kjørt!");
     }
 
 
