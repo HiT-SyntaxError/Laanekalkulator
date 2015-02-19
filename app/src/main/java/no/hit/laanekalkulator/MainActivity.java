@@ -1,8 +1,8 @@
 package no.hit.laanekalkulator;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -26,6 +27,7 @@ public class MainActivity extends ActionBarActivity {
     private SeekBar seekbarLopetid;
     private RadioGroup radiogroupTerminer;
     private EditText inputRentesats;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +58,40 @@ public class MainActivity extends ActionBarActivity {
         // ----- Input-felt for rente -----
         this.inputRentesats = (EditText) findViewById(R.id.inputRente);
 
-        // ----- Regn ut-knapp -----
-        findViewById(R.id.buttonRegnUt).setOnClickListener(new View.OnClickListener() {
+
+        // ----- Lyttere ------
+        buttonLaan10000.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lagLaan();
+                int tillegg = TypeConverter.textViewToInt(buttonLaan10000);
+                oppdaterTextView(inputLanebelop, tillegg);
             }
         });
 
-        Button nedbetalingsKnapp   = (Button) findViewById(R.id.buttonNedbetalingsplan);
+        buttonLaan50000.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int tillegg = TypeConverter.textViewToInt(buttonLaan50000);
+                oppdaterTextView(inputLanebelop, tillegg);
+            }
+        });
+        buttonLaan100000.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int tillegg = TypeConverter.textViewToInt(buttonLaan100000);
+                oppdaterTextView(inputLanebelop, tillegg);
+            }
+        });
+        buttonLaan500000.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int tillegg = TypeConverter.textViewToInt(buttonLaan500000);
+                oppdaterTextView(inputLanebelop, tillegg);
+            }
+        });
+
+        // ----- 'Lag nedbetalingsplan'-knapp -----
+        Button nedbetalingsKnapp = (Button) findViewById(R.id.buttonNedbetalingsplan);
         nedbetalingsKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,21 +100,22 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
-    private void updateTextField(EditText textfield) {
-
+    private void oppdaterTextView(TextView textView, int tillegg) {
+        int nyttBelop = TypeConverter.textViewToInt(textView) + tillegg;
+        textView.setText(""+nyttBelop);
     }
 
     private Lan lagLaan() {
 
         Lan.Lanetype lanetype = Lan.Lanetype.getByValue((String) spinnerLanetype.getSelectedItem());
-        int lanebelop = TypeConverter.editTextToInt(inputLanebelop);
+        int lanebelop = TypeConverter.textViewToInt(inputLanebelop);
         int lopetid = seekbarLopetid.getProgress();
 
         int checkedId = radiogroupTerminer.getCheckedRadioButtonId();
         RadioButton radiobutton = (RadioButton) findViewById(checkedId);
         int arligeTerminer = Integer.parseInt(String.valueOf(radiobutton.getText()));
 
-        float rentesats = TypeConverter.editTextToFloat(inputRentesats);
+        float rentesats = TypeConverter.textViewToFloat(inputRentesats);
 
         return new Lan(lanebelop, lopetid, arligeTerminer, lanetype, rentesats);
     }
@@ -104,8 +132,6 @@ public class MainActivity extends ActionBarActivity {
         i.putExtra("no.hit.laanekalkulator.nedbetalingsplanBundle", b);
         startActivityForResult(i, 0);
     }
-
-
 
 
     @Override
