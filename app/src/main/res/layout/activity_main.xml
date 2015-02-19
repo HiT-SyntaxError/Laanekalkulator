@@ -192,7 +192,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="Inkludér gebyrer i lånet"></CheckBox>
+            android:text="Inkludér gebyrer i lånet"
+            android:checked="false"
+            android:button="@drawable/checkbox_selector"></CheckBox>
 
         <Button
             android:id="@+id/buttonRegnUt"
