@@ -33,14 +33,15 @@ public class Lan {
     private int lopetid;
     private int arligeTerminer;
     private Lanetype lanetype;
-    private float rentesats;
+    private float renteFaktor;
+    private Termin[] terminer;
 
-    public Lan(int lanebelop, int lopetid, int arligeTerminer, Lanetype lanetype, float rentesats) {
+    public Lan(int lanebelop, int lopetid, int arligeTerminer, Lanetype lanetype, float renteSats) {
         this.lanebelop = lanebelop;
         this.lopetid = lopetid;
         this.arligeTerminer = arligeTerminer;
         this.lanetype = lanetype;
-        this.rentesats = rentesats;
+        this.renteFaktor = renteSats / 100;
     }
 
     public static String[] getLanetyper() {
@@ -53,11 +54,36 @@ public class Lan {
     }
 
     public void lagPlan() {
-        Termin[] terminer = new Termin[lopetid*arligeTerminer];
+        terminer = new Termin[lopetid*arligeTerminer];
+        long restGjeld = lanebelop;
+
+        for(int i = 1; i <= arligeTerminer * lopetid; i++) {
+            Termin termin;
+            int renter = calcRenter(restGjeld, renteFaktor, arligeTerminer);
+            switch (lanetype) {
+                case SERIE:
+                    int avdrag = Math.round((float) lanebelop / (lopetid * arligeTerminer));
+                    restGjeld = restGjeld - avdrag;
+                    termin = Termin.getSerieTermin(i, avdrag, renter, restGjeld);
+                    break;
+                case ANNUITET:
+                default:
+                    long terminbelop = Math.round((float) lanebelop * (renteFaktor / arligeTerminer) / (1 - Math.pow((1 + (renteFaktor / arligeTerminer)), -lopetid * arligeTerminer)));
+                    restGjeld = restGjeld - terminbelop + renter;
+                    termin = Termin.getAnnuitetsTermin(i, terminbelop, renter, restGjeld);
+                    break;
+            }
+            terminer[i-1] = termin;
+            System.out.println("Termin " + (i+1) + " | Avdrag: " + termin.getAvdrag() + " | Renter: " + termin.getRenter() + " | Restgjeld: " + termin.getRestgjeld());
+        }
     }
 
-    public void termingebyr() {
+    private int calcRenter(long restGjeld, float renteFaktor, int arligeTerminer) {
+        return Math.round((float) restGjeld * renteFaktor / arligeTerminer);
+    }
 
+    public Termin getTermin(int i) {
+        return terminer[i-1];
     }
 
     @Override
