@@ -7,4 +7,5 @@
         <item>Annuitetslån</item>
         <item>Serielån</item>
     </string-array>
+    <string name="title_activity_nedbetalingsplan">NedbetalingsplanActivity</string>
 </resources>

@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".25"
                 android:text="10.000"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:background="@drawable/button"
                 android:textColor="@color/white"
                 />
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".25"
                 android:text="50.000"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:background="@drawable/button"
                 android:textColor="@color/white"/>
 
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".25"
                 android:text="100.000"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:background="@drawable/button"
                 android:textColor="@color/white"/>
 
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".25"
                 android:text="500.000"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:background="@drawable/button"
                 android:textColor="@color/white"
                 />
@@ -193,6 +193,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Regn ut"
+            android:background="@drawable/button"
+            android:textColor="@color/white"></Button>
+
+        <Button
+            android:id="@+id/buttonNedbetalingsplan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vis nedbetalingsplan"
             android:background="@drawable/button"
             android:textColor="@color/white"></Button>
 

@@ -1,5 +1,6 @@
 package no.hit.laanekalkulator;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -51,6 +52,14 @@ public class MainActivity extends ActionBarActivity {
                 regnUt();
             }
         });
+
+        Button nedbetalingsKnapp   = (Button) findViewById(R.id.buttonNedbetalingsplan);
+        nedbetalingsKnapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                visNedbetalingsplan();
+            }
+        });
     }
 
     private void regnUt() {
@@ -64,6 +73,21 @@ public class MainActivity extends ActionBarActivity {
         Lan lan = new Lan(lanebelop, lopetid, arligeTerminer, lanetype, rentesats);
 
         System.out.println(lan.toString());
+    }
+
+    private String[] getNedbetalingsplan(){
+        String[] listeTabell = new String[50];
+        for(int rad=0;rad<listeTabell.length;rad++) {
+            listeTabell[rad] = "Dette er rad nr. " + rad;
+        }
+        return listeTabell;
+    }
+    private void visNedbetalingsplan() {
+        Intent i = new Intent(MainActivity.this, NedbetalingsplanActivity.class);
+        Bundle b = new Bundle();
+        b.putStringArray("no.hit.laanekalkulator.nedbetalingsplan", getNedbetalingsplan());
+        i.putExtra("no.hit.laanekalkulator.nedbetalingsplanBundle", b);
+        startActivityForResult(i, 0);
     }
 
 
