@@ -27,7 +27,7 @@ public class MainActivity extends ActionBarActivity {
     private SeekBar seekbarLopetid;
     private RadioGroup radiogroupTerminer;
     private EditText inputRentesats;
-
+    private Button nedbetalingsKnapp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +58,9 @@ public class MainActivity extends ActionBarActivity {
         // ----- Input-felt for rente -----
         this.inputRentesats = (EditText) findViewById(R.id.inputRente);
 
+        // ----- 'Lag nedbetalingsplan'-knapp -----
+        this.nedbetalingsKnapp = (Button) findViewById(R.id.buttonNedbetalingsplan);
+
 
         // ----- Lyttere ------
         buttonLaan10000.setOnClickListener(new View.OnClickListener() {
@@ -68,21 +71,23 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        buttonLaan50000.setOnClickListener(new View.OnClickListener() {
+        this.buttonLaan50000.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int tillegg = TypeConverter.textViewToInt(buttonLaan50000);
                 oppdaterTextView(inputLanebelop, tillegg);
             }
         });
-        buttonLaan100000.setOnClickListener(new View.OnClickListener() {
+
+        this.buttonLaan100000.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int tillegg = TypeConverter.textViewToInt(buttonLaan100000);
                 oppdaterTextView(inputLanebelop, tillegg);
             }
         });
-        buttonLaan500000.setOnClickListener(new View.OnClickListener() {
+
+        this.buttonLaan500000.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int tillegg = TypeConverter.textViewToInt(buttonLaan500000);
@@ -90,19 +95,25 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        // ----- 'Lag nedbetalingsplan'-knapp -----
-        Button nedbetalingsKnapp = (Button) findViewById(R.id.buttonNedbetalingsplan);
-        nedbetalingsKnapp.setOnClickListener(new View.OnClickListener() {
+        this.nedbetalingsKnapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 visNedbetalingsplan();
             }
         });
+
+        /*
+        this.seekbarLopetid.setOnSeekBarChangeListener(new View.OnGenericMotionListener(){
+           public void onSeekBarChange(View v) {
+                // TODO : Skriv aktuell seekbarverdi til et tekstfelt
+         }
+       });
+       */
     }
 
     private void oppdaterTextView(TextView textView, int tillegg) {
         int nyttBelop = TypeConverter.textViewToInt(textView) + tillegg;
-        textView.setText(""+nyttBelop);
+        textView.setText("" + nyttBelop);
     }
 
     private Lan lagLaan() {
@@ -120,7 +131,7 @@ public class MainActivity extends ActionBarActivity {
         return new Lan(lanebelop, lopetid, arligeTerminer, lanetype, rentesats);
     }
 
-    private String[] getNedbetalingsplan(){
+    private String[] getNedbetalingsplan() {
         Lan lan = lagLaan();
         return lan.getPresentationArray();
     }
