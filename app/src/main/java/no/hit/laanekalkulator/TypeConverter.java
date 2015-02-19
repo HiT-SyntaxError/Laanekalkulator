@@ -2,9 +2,6 @@ package no.hit.laanekalkulator;
 
 import android.widget.EditText;
 
-/**
- * Created by jorgen on 19.02.15.
- */
 public class TypeConverter {
 
     public static int editTextToInt(EditText editText) {
