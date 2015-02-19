@@ -197,14 +197,6 @@
             android:button="@drawable/checkbox_selector"></CheckBox>
 
         <Button
-            android:id="@+id/buttonRegnUt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Regn ut"
-            android:background="@drawable/button"
-            android:textColor="@color/white"></Button>
-
-        <Button
             android:id="@+id/buttonNedbetalingsplan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
