@@ -92,6 +92,6 @@ public class Lan {
                this.lanebelop + "\n" +
                this.lopetid + "\n" +
                this.arligeTerminer + "\n" +
-               this.rentesats;
+               this.renteFaktor;
     }
 }
