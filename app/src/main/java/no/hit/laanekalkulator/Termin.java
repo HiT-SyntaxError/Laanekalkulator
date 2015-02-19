@@ -7,7 +7,7 @@ public class Termin {
     private long avdrag;
     private final long restgjeld;
 
-    public static Termin getSerieTermin(int terminnr, int avdrag, int renter, long restgjeld) {
+    public static Termin getSerieTermin(int terminnr, long avdrag, int renter, long restgjeld) {
         Termin termin = new Termin(terminnr, restgjeld);
         termin.avdrag = avdrag;
         termin.renter = renter;

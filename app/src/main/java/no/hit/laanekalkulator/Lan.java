@@ -57,24 +57,33 @@ public class Lan {
         terminer = new Termin[lopetid*arligeTerminer];
         long restGjeld = lanebelop;
 
-        for(int i = 1; i <= arligeTerminer * lopetid; i++) {
+        int totalTerminCount = arligeTerminer * lopetid;
+        for(int i = 1; i <= totalTerminCount; i++) {
             Termin termin;
             int renter = calcRenter(restGjeld, renteFaktor, arligeTerminer);
             switch (lanetype) {
                 case SERIE:
-                    int avdrag = Math.round((float) lanebelop / (lopetid * arligeTerminer));
+                    long avdrag = Math.round((float) lanebelop / (lopetid * arligeTerminer));
                     restGjeld = restGjeld - avdrag;
+                    if(i == totalTerminCount) {
+                        avdrag = avdrag + restGjeld;
+                        restGjeld = 0;
+                    }
                     termin = Termin.getSerieTermin(i, avdrag, renter, restGjeld);
                     break;
                 case ANNUITET:
                 default:
                     long terminbelop = Math.round((float) lanebelop * (renteFaktor / arligeTerminer) / (1 - Math.pow((1 + (renteFaktor / arligeTerminer)), -lopetid * arligeTerminer)));
                     restGjeld = restGjeld - terminbelop + renter;
+                    if(i == totalTerminCount) {
+                        terminbelop = terminbelop + restGjeld;
+                        restGjeld = 0;
+                    }
                     termin = Termin.getAnnuitetsTermin(i, terminbelop, renter, restGjeld);
                     break;
             }
             terminer[i-1] = termin;
-            System.out.println("Termin " + (i+1) + " | Avdrag: " + termin.getAvdrag() + " | Renter: " + termin.getRenter() + " | Restgjeld: " + termin.getRestgjeld());
+            System.out.println("Termin " + i + " | Avdrag: " + termin.getAvdrag() + " | Renter: " + termin.getRenter() + " | Terminbeløp: " + termin.getTerminbelop() + " | Restgjeld: " + termin.getRestgjeld());
         }
     }
 
