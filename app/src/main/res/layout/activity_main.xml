@@ -6,44 +6,50 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background"
         android:orientation="vertical"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context=".MainActivity"
-        android:background="@drawable/background">
+        tools:context=".MainActivity">
 
         <TextView
             android:id="@+id/labelLaanetyper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lånetype"></TextView>
+            android:text="Lånetype" />
 
         <Spinner
             android:id="@+id/spinnerLaanetyper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/labelLaanetyper"
-            android:layout_marginBottom="20dp"></Spinner>
+            android:layout_marginBottom="25dp" />
 
         <TextView
             android:id="@+id/labelLaan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lån"></TextView>
+            android:text="Lån" />
 
         <EditText
             android:id="@+id/inputLaan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/labelLaan"
-            android:inputType="number"></EditText>
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/labelLaanLeggtil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Legg til lånebeløp:" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="25dp"
             android:orientation="horizontal">
 
             <Button
@@ -51,105 +57,114 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".25"
-                android:text="10000"
-                android:textSize="13dp"
                 android:background="@drawable/button"
+                android:text="10000"
                 android:textColor="@color/white"
-                />
+                android:textSize="13dp" />
 
             <Button
                 android:id="@+id/buttonLaan50000"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".25"
-                android:text="50000"
-                android:textSize="13dp"
                 android:background="@drawable/button"
-                android:textColor="@color/white"/>
+                android:text="50000"
+                android:textColor="@color/white"
+                android:textSize="13dp" />
 
             <Button
                 android:id="@+id/buttonLaan100000"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".25"
-                android:text="100000"
-                android:textSize="13dp"
                 android:background="@drawable/button"
-                android:textColor="@color/white"/>
+                android:text="100000"
+                android:textColor="@color/white"
+                android:textSize="13dp" />
 
             <Button
                 android:id="@+id/buttonLaan500000"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".25"
-                android:text="500000"
-                android:textSize="13dp"
                 android:background="@drawable/button"
+                android:text="500000"
                 android:textColor="@color/white"
-                />
-
+                android:textSize="13dp" />
 
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/labelLoepetid"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Løpetid (år)"></TextView>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/labelLoepetid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Løpetid: " />
+
+            <TextView
+                android:id="@+id/labelLoepetidVerdi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+        </LinearLayout>
 
         <SeekBar
             android:id="@+id/seekbarLoepetid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="40"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="25dp"
+            android:max="40" />
+
 
         <TextView
             android:id="@+id/labelTerminer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Terminer"></TextView>
+            android:text="Terminer" />
 
         <RadioGroup
             android:id="@+id/radioGroupTerminer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/radiobuttonTerminer1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
                 android:layout_marginRight="15dp"
-                android:button="@drawable/radiobutton_selector"/>
+                android:button="@drawable/radiobutton_selector"
+                android:text="1" />
 
             <RadioButton
                 android:id="@+id/radiobuttonTerminer2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2"
                 android:layout_marginRight="15dp"
+                android:button="@drawable/radiobutton_selector"
                 android:checked="true"
-                android:button="@drawable/radiobutton_selector" />
+                android:text="2" />
 
             <RadioButton
                 android:id="@+id/radiobuttonTerminer4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4"
                 android:layout_marginRight="15dp"
-                android:button="@drawable/radiobutton_selector" />
+                android:button="@drawable/radiobutton_selector"
+                android:text="4" />
 
             <RadioButton
                 android:id="@+id/radiobuttonTerminer12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12"
-                android:button="@drawable/radiobutton_selector"/>
+                android:button="@drawable/radiobutton_selector"
+                android:text="12" />
         </RadioGroup>
 
 
@@ -157,49 +172,47 @@
             android:id="@+id/labelRente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rente"></TextView>
+            android:text="Rente (Prosent)" />
 
         <EditText
             android:id="@+id/inputRente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/labelRente"
-            android:layout_marginBottom="20dp"
-            android:inputType="numberDecimal">
-
-        </EditText>
+            android:layout_marginBottom="25dp"
+            android:hint="2.4"
+            android:inputType="numberDecimal" />
 
         <TextView
             android:id="@+id/labelTermingebyr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Termingebyr">
-        </TextView>
+            android:text="Termingebyr" />
 
         <EditText
             android:id="@+id/inputTermingebyr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/labelTermingebyr"
-            android:layout_marginBottom="20dp"
-            android:inputType="numberDecimal"></EditText>
+            android:layout_marginBottom="25dp"
+            android:inputType="numberDecimal" />
 
         <CheckBox
             android:id="@+id/checkboxInkluderGebyrer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="Inkludér gebyrer i lånet"
+            android:layout_marginBottom="25dp"
+            android:button="@drawable/checkbox_selector"
             android:checked="false"
-            android:button="@drawable/checkbox_selector"></CheckBox>
+            android:text="Inkludér gebyrer i lånet" />
 
         <Button
             android:id="@+id/buttonNedbetalingsplan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Vis nedbetalingsplan"
             android:background="@drawable/button"
-            android:textColor="@color/white"></Button>
+            android:text="Vis nedbetalingsplan"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </ScrollView>

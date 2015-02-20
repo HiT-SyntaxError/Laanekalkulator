@@ -17,6 +17,10 @@
         android:id="@android:id/empty"
         android:text="Ingen data å vise"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:textColor="@color/white"
+        android:background="@drawable/background_nedbetalingsplan"
+        android:padding="6dp"/>
 
 </LinearLayout>

@@ -4,6 +4,7 @@
     android:shape="rectangle">
     <size android:width="20dp" android:height="20dp" />
     <stroke android:width="2dp" android:color="@color/bluedark" />
+    <corners android:radius="2dp"/>
     <gradient
         android:startColor="@color/bluelight"
         android:endColor="@color/bluedark"

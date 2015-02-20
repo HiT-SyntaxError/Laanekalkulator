@@ -14,6 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -102,14 +103,28 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        /*
-        this.seekbarLopetid.setOnSeekBarChangeListener(new View.OnGenericMotionListener(){
-           public void onSeekBarChange(View v) {
-                // TODO : Skriv aktuell seekbarverdi til et tekstfelt
-         }
-       });
-       */
+
+        final TextView seekBarValue = (TextView)findViewById(R.id.labelLoepetidVerdi);
+        seekbarLopetid.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                seekBarValue.setText(String.valueOf(progress) + " år");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
+
+
 
     private void oppdaterTextView(TextView textView, int tillegg) {
         int nyttBelop = TypeConverter.textViewToInt(textView) + tillegg;
