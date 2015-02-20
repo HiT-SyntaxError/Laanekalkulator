@@ -103,14 +103,18 @@ public class Lan {
                 StringBuilder fields = new StringBuilder();
                 fields.append("Terminnr: ");
                 fields.append(termin.getTerminNr());
-                fields.append(" | Terminbeløp: ");
+                fields.append(" \nTerminbeløp: ");
                 fields.append(Long.toString(termin.getTerminbelop()));
-                fields.append(" | Renter: ");
+                fields.append(",-");
+                fields.append("  Renter: ");
                 fields.append(Integer.toString(termin.getRenter()));
-                fields.append(" | Avdrag: ");
+                fields.append(",-");
+                fields.append("  Avdrag: ");
                 fields.append(Long.toString(termin.getAvdrag()));
-                fields.append(" | Restgjeld: ");
+                fields.append(",-");
+                fields.append(" \nRestgjeld: ");
                 fields.append(Long.toString(termin.getRestgjeld()));
+                fields.append(",-");
                 rows[i++] = fields.toString();
             }
         return rows;
