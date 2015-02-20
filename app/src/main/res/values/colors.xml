@@ -3,14 +3,17 @@
     <color name="white">#FFFFFF</color>
     <color name="bluelight">#427FED</color>
     <color name="bluedark">#225FCD</color>
+    <color name="greenlight">#53a93f</color>
+    <color name="greendark">#3f833a</color>
 
     <color name="red">#E74B37</color>
-    <color name="green">#53A93F</color>
     <color name="yellow">#A9A93F</color>
     <color name="black">#222222</color>
 
     <color name="backgroundlight">#ffffffff</color>
     <color name="backgrounddark">#ffdde2e8</color>
+    <color name="listbackgroundlight">#ff344146</color>
+    <color name="listbackgrounddark">#ff293338</color>
     <color name="buttonborder">#00ffffff</color>
 
 </resources>
