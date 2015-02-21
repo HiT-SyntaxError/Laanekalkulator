@@ -11,6 +11,15 @@ public class LanTest extends TestCase {
         assertEquals(6734, termin10.getTerminbelop());
     }
 
+    public void testAnnuitetTerminBelop() throws Exception {
+        Lan lan = new Lan(1400000, 25, 6, Lan.Lanetype.ANNUITET, 8f);
+        lan.lagPlan();
+        Termin termin1 = lan.getTermin(1);
+        Termin termin2 = lan.getTermin(2);
+        assertEquals(21633, termin1.getTerminbelop());
+        assertEquals(termin2.getTerminbelop(), termin1.getTerminbelop());
+    }
+
     public void testSerialRestgjeld() throws Exception {
         Lan lan = new Lan(1000000, 20, 12, Lan.Lanetype.SERIE, 3.2f);
         lan.lagPlan();
