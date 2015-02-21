@@ -1,10 +1,17 @@
 package no.hit.laanekalkulator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.List;
 
-public class Lan {
+public class Lan implements Serializable {
 
+
+    public List<Termin> getTerminer() {
+        return Arrays.asList(terminer);
+    }
 
     public enum Lanetype {ANNUITET("Annuitetslån"), SERIE("Serielån");
 
@@ -46,7 +53,7 @@ public class Lan {
     }
 
     public static String[] getLanetyper() {
-        ArrayList<String> lanetyper = new ArrayList<String>();
+        ArrayList<String> lanetyper = new ArrayList<>();
         for (Lanetype lanetype : Lanetype.values()) {
             lanetyper.add(lanetype.getTekst());
         }
@@ -94,26 +101,6 @@ public class Lan {
 
     public Termin getTermin(int i) {
         return terminer[i-1];
-    }
-
-    public String[] getPresentationArray() {
-        String[] rows = new String[terminer.length];
-        int i = 0;
-            for(Termin termin : terminer) {
-                StringBuilder fields = new StringBuilder();
-                fields.append("Terminnr: ");
-                fields.append(termin.getTerminNr());
-                fields.append(" | Terminbeløp: ");
-                fields.append(Long.toString(termin.getTerminbelop()));
-                fields.append(" | Renter: ");
-                fields.append(Integer.toString(termin.getRenter()));
-                fields.append(" | Avdrag: ");
-                fields.append(Long.toString(termin.getAvdrag()));
-                fields.append(" | Restgjeld: ");
-                fields.append(Long.toString(termin.getRestgjeld()));
-                rows[i++] = fields.toString();
-            }
-        return rows;
     }
 
     @Override

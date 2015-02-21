@@ -145,17 +145,12 @@ public class MainActivity extends ActionBarActivity {
         return new Lan(lanebelop, lopetid, arligeTerminer, lanetype, rentesats);
     }
 
-    private String[] getNedbetalingsplan() {
-        Lan lan = lagLaan();
-        return lan.getPresentationArray();
-    }
-
     private void visNedbetalingsplan() {
         Intent i = new Intent(MainActivity.this, NedbetalingsplanActivity.class);
         Bundle b = new Bundle();
-        b.putStringArray("no.hit.laanekalkulator.nedbetalingsplan", getNedbetalingsplan());
+        b.putSerializable("no.hit.laanekalkulator.lan", lagLaan());
         i.putExtra("no.hit.laanekalkulator.nedbetalingsplanBundle", b);
-        startActivityForResult(i, 0);
+        startActivity(i);
     }
 
 
