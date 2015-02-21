@@ -6,7 +6,7 @@ import java.util.EnumSet;
 public class Lan {
 
 
-    public enum Lanetype {SERIE("Serielån"), ANNUITET("Annuitetslån");
+    public enum Lanetype {ANNUITET("Annuitetslån"), SERIE("Serielån");
 
         private String tekst;
 
