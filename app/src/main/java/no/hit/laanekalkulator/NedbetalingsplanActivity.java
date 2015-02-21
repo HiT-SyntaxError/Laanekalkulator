@@ -41,15 +41,15 @@ public class NedbetalingsplanActivity extends  Activity {
     private String getFieldHeader(String colName) {
         switch (colName) {
             case Termin.TERMINNR:
-                return "Termin nr";
+                return "Termin";
             case Termin.AVDRAG:
                 return "Avdrag";
             case Termin.RENTER:
-                return "renter";
+                return "Renter";
             case Termin.TERMINBELOP:
-                return "terminbelop";
+                return "Terminbelop";
             case Termin.RESTGJELD:
-                return "restgjeld";
+                return "Restgjeld";
             default:
                 return "";
         }
@@ -59,19 +59,23 @@ public class NedbetalingsplanActivity extends  Activity {
         // 1) Create a tableLayout and its params
         TableLayout.LayoutParams tableLayoutParams = new TableLayout.LayoutParams();
         TableLayout tableLayout = new TableLayout(this);
-        tableLayout.setBackgroundColor(Color.BLACK);
+        tableLayout.setBackgroundColor(Color.rgb(63,131,173));
 
         // 2) create tableRow params
         TableRow.LayoutParams tableRowParams = new TableRow.LayoutParams();
         tableRowParams.setMargins(1, 1, 1, 1);
         tableRowParams.weight = 1;
 
+        TableRow.LayoutParams headerRowParams = new TableRow.LayoutParams();
+        headerRowParams.setMargins(8, 3, 8, 3);
+        headerRowParams.weight = 1;
+
         TableRow headerRow = new TableRow(this);
         for(String column : columns) {
             TextView headerTextView = new TextView(this);
             headerTextView.setBackgroundColor(Color.rgb(63,131,173));
             headerTextView.setText(getFieldHeader(column));
-            headerRow.addView(headerTextView);
+            headerRow.addView(headerTextView, headerRowParams);
         }
         tableLayout.addView(headerRow, tableLayoutParams);
 
