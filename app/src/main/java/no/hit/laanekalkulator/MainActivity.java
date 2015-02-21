@@ -24,6 +24,7 @@ public class MainActivity extends ActionBarActivity {
     private Button buttonLaan50000;
     private Button buttonLaan100000;
     private Button buttonLaan500000;
+    private TextView textViewLopetid;
     private SeekBar seekbarLopetid;
     private RadioGroup radiogroupTerminer;
     private EditText inputRentesats;
@@ -49,8 +50,11 @@ public class MainActivity extends ActionBarActivity {
         this.buttonLaan100000 = (Button) findViewById(R.id.buttonLaan100000);
         this.buttonLaan500000 = (Button) findViewById(R.id.buttonLaan500000);
 
-        // ----- Input-felt for løpetid -----
-        this.seekbarLopetid = (SeekBar) findViewById(R.id.seekbarLoepetid);
+        // ----- Tekstfelt for løpetid -----
+        this.textViewLopetid = (TextView) findViewById(R.id.textViewLoepetid);
+
+        // ----- Seekbar for løpetid -----
+        this.seekbarLopetid = (SeekBar) findViewById(R.id.seekBarLoepetid);
 
         // ----- Input-felt for antall terminer -----
         this.radiogroupTerminer = (RadioGroup) findViewById(R.id.radioGroupTerminer);
@@ -102,13 +106,23 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        /*
-        this.seekbarLopetid.setOnSeekBarChangeListener(new View.OnGenericMotionListener(){
-           public void onSeekBarChange(View v) {
-                // TODO : Skriv aktuell seekbarverdi til et tekstfelt
-         }
-       });
-       */
+        this.seekbarLopetid.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                textViewLopetid.setText("Løpetid " + String.valueOf(progress) + " år");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                textViewLopetid.setTextSize(20);
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                textViewLopetid.setTextSize(15);
+            }
+        });
     }
 
     private void oppdaterTextView(TextView textView, int tillegg) {

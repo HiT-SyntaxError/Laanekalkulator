@@ -93,13 +93,14 @@
 
 
         <TextView
-            android:id="@+id/labelLoepetid"
+            android:id="@+id/textViewLoepetid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Løpetid (år)"></TextView>
+            android:text="Løpetid 0 år"></TextView>
 
         <SeekBar
-            android:id="@+id/seekbarLoepetid"
+            android:id="@+id/seekBarLoepetid"
+            android:layout_below="@id/textViewLoepetid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="40"
@@ -166,7 +167,6 @@
             android:layout_below="@id/labelRente"
             android:layout_marginBottom="20dp"
             android:inputType="numberDecimal">
-
         </EditText>
 
         <TextView
