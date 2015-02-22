@@ -1,11 +1,5 @@
 <resources>
-    <string name="app_name">Laanekalkulator</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string-array name="laanetyper_array">
-        <item>Annuitetslån</item>
-        <item>Serielån</item>
-    </string-array>
+    <string name="app_name">Lånekalkulator</string>
+    <string name="action_settings">Innstillinger</string>
     <string name="title_activity_nedbetalingsplan">NedbetalingsplanActivity</string>
 </resources>

@@ -31,7 +31,7 @@
             android:id="@+id/labelLaan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lån"></TextView>
+            android:text="Lånebeløp"></TextView>
 
         <EditText
             android:id="@+id/inputLaan"
@@ -111,7 +111,7 @@
             android:id="@+id/labelTerminer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Terminer"></TextView>
+            android:text="Terminer pr. år"></TextView>
 
         <RadioGroup
             android:id="@+id/radioGroupTerminer"
