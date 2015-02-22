@@ -37,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
 
         // ----- Valg av lånetype ----
         this.spinnerLanetype = (Spinner) findViewById(R.id.spinnerLaanetyper);
-        ArrayAdapter<String> lanetypeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Lan.getLanetyper());
+        ArrayAdapter<String> lanetypeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Laan.getLanetyper());
         lanetypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         this.spinnerLanetype.setAdapter(lanetypeAdapter);
 
@@ -130,9 +130,9 @@ public class MainActivity extends ActionBarActivity {
         textView.setText("" + nyttBelop);
     }
 
-    private Lan lagLaan() {
+    private Laan lagLaan() {
 
-        Lan.Lanetype lanetype = Lan.Lanetype.getByValue((String) spinnerLanetype.getSelectedItem());
+        Laan.Lanetype lanetype = Laan.Lanetype.getByValue((String) spinnerLanetype.getSelectedItem());
         int lanebelop = TypeConverter.textViewToInt(inputLanebelop);
         int lopetid = seekbarLopetid.getProgress();
 
@@ -142,7 +142,7 @@ public class MainActivity extends ActionBarActivity {
 
         float rentesats = TypeConverter.textViewToFloat(inputRentesats);
 
-        return new Lan(lanebelop, lopetid, arligeTerminer, lanetype, rentesats);
+        return new Laan(lanebelop, lopetid, arligeTerminer, lanetype, rentesats);
     }
 
     private void visNedbetalingsplan() {

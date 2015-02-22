@@ -6,16 +6,7 @@ import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 
-public class Lan implements Serializable {
-
-
-    public List<Termin> getTerminer() {
-        return Arrays.asList(terminer);
-    }
-
-    public List<TerminGroup> getTerminGroups() {
-        return terminGroups;
-    }
+public class Laan implements Serializable {
 
     public enum Lanetype {ANNUITET("Annuitetslån"), SERIE("Serielån");
 
@@ -40,15 +31,13 @@ public class Lan implements Serializable {
     }
 
     private int lanebelop;
-
     private int lopetid;
     private int arligeTerminer;
     private Lanetype lanetype;
     private float renteFaktor;
     private Termin[] terminer;
-    private List<TerminGroup> terminGroups = new ArrayList<>();
 
-    public Lan(int lanebelop, int lopetid, int arligeTerminer, Lanetype lanetype, float renteSats) {
+    public Laan(int lanebelop, int lopetid, int arligeTerminer, Lanetype lanetype, float renteSats) {
         this.lanebelop = lanebelop;
         this.lopetid = lopetid;
         this.arligeTerminer = arligeTerminer;
@@ -71,7 +60,6 @@ public class Lan implements Serializable {
         long restGjeld = lanebelop;
 
         int totalTerminCount = arligeTerminer * lopetid;
-        TerminGroup terminGroup = new TerminGroup();
         for(int i = 1; i <= totalTerminCount; i++) {
             Termin termin;
             int renter = calcRenter(restGjeld, renteFaktor, arligeTerminer);
@@ -97,12 +85,7 @@ public class Lan implements Serializable {
                     break;
             }
             terminer[i-1] = termin;
-            terminGroup.add(termin);
-            if(i % arligeTerminer == 0) {
-                terminGroups.add(terminGroup);
-                terminGroup = new TerminGroup();
-            }
-            System.out.println("Termin " + i + " | Avdrag: " + termin.getAvdrag() + " | Renter: " + termin.getRenter() + " | Terminbeløp: " + termin.getTerminbelop() + " | Restgjeld: " + termin.getRestgjeld());
+            //System.out.println("Termin " + i + " | Avdrag: " + termin.getAvdrag() + " | Renter: " + termin.getRenter() + " | Terminbeløp: " + termin.getTerminbelop() + " | Restgjeld: " + termin.getRestgjeld());
         }
     }
 
@@ -114,12 +97,7 @@ public class Lan implements Serializable {
         return terminer[i-1];
     }
 
-    @Override
-    public String toString() {
-        return this.lanetype + "\n" +
-               this.lanebelop + "\n" +
-               this.lopetid + "\n" +
-               this.arligeTerminer + "\n" +
-               this.renteFaktor;
+    public List<Termin> getTerminer() {
+        return Arrays.asList(terminer);
     }
 }

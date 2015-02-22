@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.widget.HorizontalScrollView;
 import android.widget.ScrollView;
@@ -16,7 +15,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 
 
-public class NedbetalingsplanActivity extends  Activity {
+public class NedbetalingsplanActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,12 +23,11 @@ public class NedbetalingsplanActivity extends  Activity {
         Intent i = getIntent();
         if (i != null) {
             Bundle bundle = i.getBundleExtra("no.hit.laanekalkulator.nedbetalingsplanBundle");
-            Lan lan = (Lan) bundle.getSerializable("no.hit.laanekalkulator.lan");
+            Laan laan = (Laan) bundle.getSerializable("no.hit.laanekalkulator.lan");
 
             ScrollView sv = new ScrollView(this);
             String[] columns = {Termin.TERMINNR, Termin.AVDRAG, Termin.RENTER, Termin.TERMINBELOP, Termin.RESTGJELD};
-            Log.d("TAG", "Defining " + columns.length + " columns");
-            TableLayout tableLayout = createTableLayout(lan.getTerminer(), columns);
+            TableLayout tableLayout = createTableLayout(laan.getTerminer(), columns);
             HorizontalScrollView hsv = new HorizontalScrollView(this);
 
             hsv.addView(tableLayout);
@@ -59,21 +57,21 @@ public class NedbetalingsplanActivity extends  Activity {
         // 1) Create a tableLayout and its params
         TableLayout.LayoutParams tableLayoutParams = new TableLayout.LayoutParams();
         TableLayout tableLayout = new TableLayout(this);
-        tableLayout.setBackgroundColor(Color.rgb(63,131,173));
+        tableLayout.setBackgroundColor(Color.rgb(63, 131, 173));
 
         // 2) create tableRow params
-        TableRow.LayoutParams tableRowParams = new TableRow.LayoutParams();
-        tableRowParams.setMargins(1, 1, 1, 1);
-        tableRowParams.weight = 1;
-
         TableRow.LayoutParams headerRowParams = new TableRow.LayoutParams();
         headerRowParams.setMargins(8, 3, 8, 3);
         headerRowParams.weight = 1;
 
+        TableRow.LayoutParams tableRowParams = new TableRow.LayoutParams();
+        tableRowParams.setMargins(1, 1, 1, 1);
+        tableRowParams.weight = 1;
+
         TableRow headerRow = new TableRow(this);
-        for(String column : columns) {
+        for (String column : columns) {
             TextView headerTextView = new TextView(this);
-            headerTextView.setBackgroundColor(Color.rgb(63,131,173));
+            headerTextView.setBackgroundColor(Color.rgb(63, 131, 173));
             headerTextView.setText(getFieldHeader(column));
             headerRow.addView(headerTextView, headerRowParams);
         }
@@ -118,18 +116,5 @@ public class NedbetalingsplanActivity extends  Activity {
                 throw new InputMismatchException("Expected a valid column type");
         }
     }
-
-/*
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id ) {
-        TextView raden = (TextView) v;
-        Intent resultat = new Intent();
-        resultat.putExtra("ValgtText", raden.getText());
-        resultat.putExtra("ValgtPosisjon", position);
-        System.out.println("Du klikket på " + raden.getText());
-        setResult(Activity.RESULT_OK, resultat);
-        this.finish();
-    }
-    */
 }
 
